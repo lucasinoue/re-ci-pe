@@ -4,7 +4,7 @@ import { RiCake3Line } from 'react-icons/ri'
 import { InfoIcon } from '@components/InfoIcon';
 import { BackButton } from '@components/BackButton';
 import { Container } from '@styles/recipe';
-import Table from '@components/Table';
+import { Table } from '@components/Table';
 import { GetServerSideProps, GetStaticPaths } from 'next';
 import axios from 'axios';
 import { Recipe } from 'typings/Recipe';

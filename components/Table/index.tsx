@@ -9,7 +9,7 @@ interface TableProps {
   data: Ingredient[]
 }
 
-function Table({ data }: TableProps) {
+export function Table({ data }: TableProps) {
 
   const columns = useMemo(() => {
     return [
@@ -73,5 +73,3 @@ function Table({ data }: TableProps) {
    </Container>
   );
 };
-
-export default Table;

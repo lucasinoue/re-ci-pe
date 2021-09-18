@@ -4,15 +4,15 @@ import { Container } from './styles';
 
 export function BackButton() {
 
-  const router = useRouter();
+  const { back } = useRouter();
 
   const handleBack = () => {
-    router.back();
+    back();
   }
 
   return (
     <Container onClick={handleBack} title="Voltar" data-cy="back-to-route" >
-      <BiArrowBack fontSize="1rem"/>
+      <BiArrowBack fontSize="1rem" data-testid="arrow-back-icon" />
     </Container>
   );
 }
