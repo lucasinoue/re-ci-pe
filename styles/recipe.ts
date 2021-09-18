@@ -5,15 +5,16 @@ export const Container = styled.div`
   justify-content: flex-start;
   padding: 1.5rem;
 
+  @media(max-width: 480px) {
+    flex-direction: column;
+  }
 
   div {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-
-
-
+    min-width: 20%;
   }
 
   > section {
@@ -24,11 +25,5 @@ export const Container = styled.div`
   h1 {
     margin-top: 0.6rem;
   }
-
-  /* @media (min-width: 720px) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  } */
 
 `

@@ -1,7 +1,8 @@
 import { Pill } from '@components/Pill';
 
 import { RiCake3Line } from 'react-icons/ri'
-import { InfoIcon } from '../../components/InfoIcon';
+import { InfoIcon } from '@components/InfoIcon';
+import { BackButton } from '@components/BackButton';
 import { Container } from '@styles/recipe';
 import Table from '@components/Table';
 import { GetServerSideProps, GetStaticPaths } from 'next';
@@ -16,12 +17,17 @@ function RecipeScreen({ recipe }: RecipeProps ) {
   return (
     <Container>
       <div>
-        <Pill>Sobremesa</Pill>
+        <BackButton />
+        <Pill>{recipe.category}</Pill>
         <h1>{recipe.name}</h1>
 
         <section>
-          <InfoIcon caption={`${recipe.servings} porções`} icon={<RiCake3Line size="1.8rem"/>} />
+          <InfoIcon 
+            caption={`${recipe.servings} porções`} 
+            icon={<RiCake3Line size="1.8rem"/>} 
+          />
         </section>
+
       </div>
 
       <section>

@@ -59,4 +59,13 @@ export const Container = styled.table`
     th:nth-child(4) { display: none; }
   }
 
+  @media (max-width: 480px) {
+
+    margin-top: 3rem;
+
+    th {
+      font-size: 0.8rem;
+    }
+  }
+
 `;

@@ -1,26 +1,49 @@
 import Head from 'next/head';
 import Link from 'next/link';
+
 import { Container } from '@styles/home';
 
-export default function Home() {
+import { Button } from '@components/Button';
+import { useRouter } from 'next/router';
+import { GetServerSideProps } from 'next';
+import axios from 'axios';
+import { Recipe } from 'typings/Recipe';
+
+type HomeProps = {
+  recipes: Recipe[];
+}
+
+export default function Home({ recipes }: HomeProps) {
+
+  const router = useRouter();
+
   return (
     <>
       <Head>
         <title>Re-ci-pes!</title>
       </Head>
       <Container>
-        <h1>Re-ci-pe</h1>
+        <h1>Re-ci-pes!</h1>
 
         <main>
-          <h3>Últimas receitas</h3>
-        
-          <Link href="/recipe/10">Receita A</Link>
-          <Link href="/recipe/11">Receita B</Link>
-          <Link href="/recipe/12">Receita C</Link>
-
+          {recipes.map(recipe => (
+            <Link key={recipe.id} href={`/recipes/${recipe.id}`} passHref>
+              <a><h3>{recipe.name}</h3></a>
+            </Link>
+          ))}
         </main>
 
       </Container>
     </>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const { data } = await axios.get('http://localhost:3000/api/recipes')
+
+  return {
+    props: {
+      recipes: data.recipes,
+    }
+  }
 }

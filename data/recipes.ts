@@ -62,11 +62,13 @@ export const recipes: Recipe[] = [
     name: 'Petit Gateau',
     ingredients: petitGateau,
     servings: 6,
+    category: 'Sobremesa',
   },
   {
     id: 11,
     name: 'Test',
     ingredients: test,
     servings: 12,
+    category: 'Sopa',
   }
 ] 

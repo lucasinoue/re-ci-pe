@@ -5,4 +5,5 @@ export type Recipe = {
   name: string;
   ingredients: Ingredient[];
   servings: number;
+  category: 'Sobremesa' | 'Sopa'
 }
