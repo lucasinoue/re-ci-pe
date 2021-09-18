@@ -11,7 +11,7 @@ export function BackButton() {
   }
 
   return (
-    <Container onClick={handleBack} title="Voltar">
+    <Container onClick={handleBack} title="Voltar" data-cy="back-to-route" >
       <BiArrowBack fontSize="1rem"/>
     </Container>
   );

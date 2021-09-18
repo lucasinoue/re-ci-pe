@@ -19,7 +19,7 @@ function RecipeScreen({ recipe }: RecipeProps ) {
       <div>
         <BackButton />
         <Pill>{recipe.category}</Pill>
-        <h1>{recipe.name}</h1>
+        <h1 data-cy="recipe-name">{recipe.name}</h1>
 
         <section>
           <InfoIcon 
