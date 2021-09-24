@@ -5,7 +5,7 @@ import { InfoIcon } from '@components/InfoIcon';
 import { BackButton } from '@components/BackButton';
 import { Container } from '@styles/recipe';
 import { Table } from '@components/Table';
-import { GetServerSideProps, GetStaticPaths } from 'next';
+import { GetStaticPaths, GetStaticProps } from 'next';
 import axios from 'axios';
 import { Recipe } from 'typings/Recipe';
 
@@ -38,9 +38,23 @@ function RecipeScreen({ recipe }: RecipeProps ) {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  const { id } = query;
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const { data } = await axios.get('http://localhost:3000/api/recipes');
+
+  return {
+    paths: data.recipes.map(el => ({ params: { id: el.id.toString() } })),
+    fallback: false
+  }
+
+}
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const { id } = params;
+  
   const { data } = await axios.get(`http://localhost:3000/api/recipes/${id}`);
+
+  console.log(data);
 
   return {
     props: {

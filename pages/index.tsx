@@ -5,7 +5,7 @@ import { Container } from '@styles/home';
 
 import { Button } from '@components/Button';
 import { useRouter } from 'next/router';
-import { GetServerSideProps } from 'next';
+import { GetServerSideProps, GetStaticProps } from 'next';
 import axios from 'axios';
 import { Recipe } from 'typings/Recipe';
 
@@ -38,7 +38,7 @@ export default function Home({ recipes }: HomeProps) {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const { data } = await axios.get('http://localhost:3000/api/recipes')
 
   return {
