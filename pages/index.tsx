@@ -3,11 +3,11 @@ import Link from 'next/link';
 
 import { Container } from '@styles/home';
 
-import { Button } from '@components/Button';
 import { useRouter } from 'next/router';
-import { GetServerSideProps, GetStaticProps } from 'next';
-import axios from 'axios';
+import { GetStaticProps } from 'next';
 import { Recipe } from 'typings/Recipe';
+
+import { recipes } from '../data/recipes'; 
 
 type HomeProps = {
   recipes: Recipe[];
@@ -38,12 +38,13 @@ export default function Home({ recipes }: HomeProps) {
   )
 }
 
-export const getStaticProps: GetStaticProps = async () => {
-  const { data } = await axios.get('http://localhost:3000/api/recipes')
+export const getStaticProps: GetStaticProps = () => {
+
+
 
   return {
     props: {
-      recipes: data.recipes,
+      recipes,
     }
   }
 }
